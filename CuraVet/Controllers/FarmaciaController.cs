@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CuraVet.Controllers
 {
+    [Authorize(Roles ="Far")]
     public class FarmaciaController : Controller
     {
         // GET: Farmacia

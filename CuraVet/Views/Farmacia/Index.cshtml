@@ -5,29 +5,30 @@
 
 <h2 class="my-2">Farmacia CuraVet</h2>
 
-<div class="card d-flex flex-row my-4">
+<div class="card d-flex flex-row my-4 align-items-center">
     <img src="~/Content/assets/prodotti.jpg" class="card-img-top w-25" alt="Farmaci" />
     <div class="card-body">
         <h5 class="card-title">I Nostri Prodotti</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Visualizza la lista dei prodotti, aggiungine di nuovi o modifica i Prodotti già presenti in Magazzino! </p>
         @Html.ActionLink("Visualizza","ProductList","", new { @class= "btn btn-primary"})
     </div>
 </div>
 
-<div class="card d-flex flex-row-reverse my-4">
+<div class="card d-flex flex-row-reverse my-4 align-items-center">
     <img src="~/Content/assets/vendita.jpg" class="card-img-top w-50" alt="Vendita" />
     <div class="card-body">
-        <h5 class="card-title">Aggiungi una Vendita</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        @Html.ActionLink("Aggiungi Vendita", "AddVendita", "", new { @class = "btn btn-primary" })
+        <h5 class="card-title">I Nostri Clienti</h5>
+        <p class="card-text">Visualizza la lista dei nostri Clienti, registrane di nuovi, modifica i Clienti Registrati o salva una Nuova Vendita!</p>
+            @Html.ActionLink("Aggiungi Cliente", "AddCliente", "", new { @class = "btn btn-primary" })
     </div>
 </div>
 
-<div class="card d-flex flex-row my-4">
-    <img src="~/Content/assets/cerca.jpg" class="card-img-top w-25" alt="Cerca" />
+<div class="card d-flex flex-row my-4 align-items-center">
+    <img src="~/Content/assets/cerca.jpg" class="card-img-top w-50" alt="Cerca" />
     <div class="card-body">
         <h5 class="card-title">Cerca un Prodotto</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <input placeholder="Inserisci Nome Prodotto"/>
+        <p class="card-text">Cerca un Prodotto specifico per Nome!</p>
         @Html.ActionLink("Cerca", "Search", "", new { @class = "btn btn-primary" })
     </div>
 </div>
