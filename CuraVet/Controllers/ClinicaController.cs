@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -106,6 +107,8 @@ namespace CuraVet.Controllers
             List<SelectListItem> listTipo = new List<SelectListItem>();
             List<Cliente> c = db.Cliente.ToList();
             List<Tipologia> t = db.Tipologia.ToList();
+            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone", Value = "NULL" };
+            listClienti.Add(itemDefault);
             foreach (Cliente cl in c)
             {
                 SelectListItem item = new SelectListItem { Text = $"{cl.Nome} {cl.Cognome}", Value = $"{cl.IdCliente}" };
@@ -121,12 +124,14 @@ namespace CuraVet.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddAnimale(Animale a)
+        public ActionResult AddAnimale(Animale a, HttpPostedFileBase Foto)
         {
             List<SelectListItem> listClienti = new List<SelectListItem>();
             List<SelectListItem> listTipo = new List<SelectListItem>();
             List<Cliente> c = db.Cliente.ToList();
             List<Tipologia> t = db.Tipologia.ToList();
+            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone"};
+            listClienti.Add(itemDefault);
             foreach (Cliente cl in c)
             {
                 SelectListItem item = new SelectListItem { Text = $"{cl.Nome} {cl.Cognome}", Value = $"{cl.IdCliente}" };
@@ -141,7 +146,15 @@ namespace CuraVet.Controllers
             ViewBag.ListTipo = listTipo;
             if (ModelState.IsValid)
             {
-
+                if (Foto != null && Foto.ContentLength > 0)
+                {
+                    string nomeFile = Foto.FileName;
+                    string path = Path.Combine(Server.MapPath("~/Content/assets"), nomeFile);
+                    Foto.SaveAs(path);
+                    a.Foto = nomeFile;
+                }
+                db.Animale.Add(a);
+                db.SaveChanges();
                 return RedirectToAction("ClientiList");
             }
             else
