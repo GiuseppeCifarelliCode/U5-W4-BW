@@ -277,6 +277,9 @@
     <Content Include="Views\Ditta\Details.cshtml" />
     <Content Include="Views\Ditta\Edit.cshtml" />
     <Content Include="Views\Ditta\Index.cshtml" />
+    <Content Include="Views\Clinica\AnimaliList.cshtml" />
+    <Content Include="Views\Clinica\AddVisita.cshtml" />
+    <Content Include="Views\Clinica\AnimaleDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

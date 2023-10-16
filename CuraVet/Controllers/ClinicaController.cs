@@ -164,6 +164,39 @@ namespace CuraVet.Controllers
                 return View();
             }
         }
+        public ActionResult AnimaliList()
+        {
+            return View(db.Animale.ToList());
+        }
+        [HttpGet]
+        public ActionResult AddVisita(int id)
+        {
+            TempData["Id"] = id;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddVisita(Visita v)
+        {
+            if (ModelState.IsValid)
+            {
+                v.DataVisita = DateTime.Now;
+                v.IdAnimale = (int)TempData["Id"];
+                db.Visita.Add(v);
+                db.SaveChanges();
+                return RedirectToAction("AnimaliList");
+            }
+            else
+            {
+                {
+                    return View(v);
+                }
+            }
+        }
+        public ActionResult AnimaleDetails(int id)
+        {
+            Animale a = db.Animale.Find(id);
+            return View(a);
+        }
 
     }
 }
