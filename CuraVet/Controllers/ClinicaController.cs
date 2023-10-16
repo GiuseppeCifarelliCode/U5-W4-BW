@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CuraVet.Controllers
 {
+    [Authorize(Roles ="Vet")]
     public class ClinicaController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
