@@ -257,6 +257,8 @@
     <Content Include="Views\Clinica\TipologiaList.cshtml" />
     <Content Include="Views\Clinica\AddCliente.cshtml" />
     <Content Include="Views\Clinica\ClientiList.cshtml" />
+    <Content Include="Views\Clinica\ModifyCliente.cshtml" />
+    <Content Include="Views\Clinica\AddAnimale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
