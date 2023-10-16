@@ -11,6 +11,12 @@ namespace CuraVet.Controllers
     {
         private ModelDBContext db = new ModelDBContext();
         // GET: Clinica
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult AddTipologia()
         {
