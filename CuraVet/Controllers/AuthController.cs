@@ -29,7 +29,7 @@ namespace CuraVet.Controllers
             }
             else
             {
-                ViewBag.Error("Username e Password non coincidono!");
+                ViewBag.Error = "Username e Password non coincidono!";
                 return View();
             }
         }
