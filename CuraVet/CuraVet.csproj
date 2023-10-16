@@ -163,6 +163,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ClinicaController.cs" />
+    <Compile Include="Controllers\FarmaciaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -178,6 +181,7 @@
     <Compile Include="Models\Ditta.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\Prodotto.cs" />
+    <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\Tipologia.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vendita.cs" />
@@ -186,6 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\assets\Cinica1.jpg" />
+    <Content Include="Content\assets\Farmacia 2.jpeg" />
+    <Content Include="Content\assets\prodotti.jpg" />
+    <Content Include="Content\assets\Clinica2.jpg" />
+    <Content Include="Content\assets\vendita.jpg" />
+    <Content Include="Content\assets\Farmacia 1.jpeg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -249,6 +259,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Clinica\AddTipologia.cshtml" />
+    <Content Include="Views\Clinica\TipologiaList.cshtml" />
+    <Content Include="Views\Clinica\AddCliente.cshtml" />
+    <Content Include="Views\Clinica\ClientiList.cshtml" />
+    <Content Include="Views\Clinica\Index.cshtml" />
+    <Content Include="Views\Farmacia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
