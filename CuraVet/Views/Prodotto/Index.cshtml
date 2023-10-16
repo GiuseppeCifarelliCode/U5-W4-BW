@@ -6,19 +6,15 @@
 
 
 
-   
-<button style="float:left; " class="me-4">
-    @Html.ActionLink("Aggiungi un nuovo prodotto", "Create")
-
-</button>
-<button>
-    @Html.ActionLink("Aggiungi ditta", "Create", "Ditta")
-</button>
+<div class="my-2">
+    @Html.ActionLink("Aggiungi Nuovo Prodotto", "Create", "Prodotto", "", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Aggiungi Ditta", "Create", "Ditta", "", new { @class = "btn btn-primary" })
+</div>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Ditta.Nome)
+            @Html.DisplayNameFor(model => model.Ditta)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
