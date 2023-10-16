@@ -154,6 +154,7 @@ namespace CuraVet.Controllers
                     Foto.SaveAs(path);
                     a.Foto = nomeFile;
                 }
+                a.DataRegistrazione = DateTime.Now;
                 db.Animale.Add(a);
                 db.SaveChanges();
                 return RedirectToAction("ClientiList");
