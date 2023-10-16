@@ -4,22 +4,36 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    <title>@ViewBag.Title - CuraVet</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
           rel="stylesheet" />
+    <link rel="website icon" type="png"
+          href="~/Content/assets/Icon.jpg"/>
     @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Farmacia</a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/Auth/Login">Login</a>
-                </li>
+            <ul class="navbar-nav w-100 d-flex justify-content-between mx-2">
+                <li>@Html.ActionLink("CuraVet", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                @if (User.IsInRole("Vet"))
+                {
+                    <li>@Html.ActionLink("Clinica", "Index", "Clinica", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
+                }
+                else if (User.IsInRole("Far"))
+                {
+                    <li>@Html.ActionLink("Farmacia", "Index", "Farmacia", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
+                }
             </ul>
         </div>
     </nav>
@@ -27,8 +41,20 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+        <footer class="bg-light text-center py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&copy; 2023 CuraVet - Sito web creato da:</p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/giuseppe-cifarelli-fullstack-developer/" target="_blank">Cifarelli Giuseppe</a> -
+                            <a href="https://www.linkedin.com/in/nicole-beani-613b16289/" target="_blank">Beani Nicole</a> -
+                            <a href="https://www.linkedin.com/in/paolo-esposito-developer/" target="_blank">Esposito Paolo</a> -
+                            <a href="https://www.linkedin.com/in/andreas-ubertini-web-developer/" target="_blank">Ubertini Andreas</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
