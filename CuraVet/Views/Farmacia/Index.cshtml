@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="my-2">Farmacia CuraVet</h2>
+
+<div class="card d-flex flex-row my-4">
+    <img src="~/Content/assets/prodotti.jpg" class="card-img-top w-25" alt="Farmaci" />
+    <div class="card-body">
+        <h5 class="card-title">I Nostri Prodotti</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        @Html.ActionLink("Visualizza","ProductList","", new { @class= "btn btn-primary"})
+    </div>
+</div>
+
+<div class="card d-flex flex-row-reverse my-4">
+    <img src="~/Content/assets/vendita.jpg" class="card-img-top w-50" alt="Vendita" />
+    <div class="card-body">
+        <h5 class="card-title">Aggiungi una Vendita</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        @Html.ActionLink("Aggiungi Vendita", "AddVendita", "", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class="card d-flex flex-row my-4">
+    <img src="~/Content/assets/cerca.jpg" class="card-img-top w-25" alt="Cerca" />
+    <div class="card-body">
+        <h5 class="card-title">Cerca un Prodotto</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        @Html.ActionLink("Cerca", "Search", "", new { @class = "btn btn-primary" })
+    </div>
+</div>
