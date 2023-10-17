@@ -162,6 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ClinicaController.cs" />
     <Compile Include="Controllers\DittaController.cs" />
     <Compile Include="Controllers\FarmaciaController.cs" />
@@ -193,6 +194,7 @@
     <Content Include="Content\assets\Cinica1.jpg" />
     <Content Include="Content\assets\Farmacia 2.jpeg" />
     <Content Include="Content\assets\Icon.jpg" />
+    <Content Include="Content\assets\padrone.jpg" />
     <Content Include="Content\assets\prodotti.jpg" />
     <Content Include="Content\assets\Clinica2.jpg" />
     <Content Include="Content\assets\vendita.jpg" />
@@ -280,6 +282,9 @@
     <Content Include="Views\Clinica\AnimaliList.cshtml" />
     <Content Include="Views\Clinica\AddVisita.cshtml" />
     <Content Include="Views\Clinica\AnimaleDetails.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\AddCliente.cshtml" />
+    <Content Include="Views\Cliente\ModifyCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

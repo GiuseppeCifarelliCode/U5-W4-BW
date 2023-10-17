@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CuraVet.Controllers
 {
-    [Authorize(Roles ="Vet")]
+    [Authorize(Roles = "Vet")]
     public class ClinicaController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
@@ -53,54 +53,7 @@ namespace CuraVet.Controllers
         {
             return View(db.Tipologia.ToList());
         }
-        [HttpGet]
-        public ActionResult AddCliente()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddCliente(Cliente c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Cliente.Add(c);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-
-        }
-        public ActionResult ClientiList()
-        {
-            return View(db.Cliente.ToList());
-        }
-        public ActionResult DeleteCliente(int id)
-        {
-            Cliente c = db.Cliente.Find(id);
-            db.Cliente.Remove(c);
-            db.SaveChanges();
-            return RedirectToAction("ClientiList");
-        }
-        [HttpGet]
-        public ActionResult ModifyCliente(int id)
-        {
-            Cliente c = db.Cliente.Find(id);
-            return View(c);
-        }
-        [HttpPost]
-        public ActionResult ModifyCliente(Cliente c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(c).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ClientiList");
-            }
-            else
-            {
-                return View(c);
-            }
-        }
+       
         [HttpGet]
         public ActionResult AddAnimale()
         {
@@ -131,7 +84,7 @@ namespace CuraVet.Controllers
             List<SelectListItem> listTipo = new List<SelectListItem>();
             List<Cliente> c = db.Cliente.ToList();
             List<Tipologia> t = db.Tipologia.ToList();
-            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone"};
+            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone" };
             listClienti.Add(itemDefault);
             foreach (Cliente cl in c)
             {
@@ -181,6 +134,7 @@ namespace CuraVet.Controllers
             {
                 v.DataVisita = DateTime.Now;
                 v.IdAnimale = (int)TempData["Id"];
+                v.Attiva = true;
                 db.Visita.Add(v);
                 db.SaveChanges();
                 return RedirectToAction("AnimaliList");
@@ -196,6 +150,28 @@ namespace CuraVet.Controllers
         {
             Animale a = db.Animale.Find(id);
             return View(a);
+        }
+        [HttpGet]
+        public ActionResult ModifyVisita(int id)
+        {
+            Visita v = db.Visita.Find(id);
+            return View(v);
+        }
+        [HttpPost]
+        public ActionResult ModifyVisita(Visita v)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(v).State = EntityState.Modified;
+                db.SaveChanges();
+                int id = v.IdAnimale;
+                return RedirectToAction("AnimaleDetails", new { 
+                    id});
+            }
+            else
+            {
+                return View(v);
+            }
         }
 
     }
