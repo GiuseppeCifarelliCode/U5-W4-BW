@@ -31,6 +31,7 @@
                 else if (User.IsInRole("Far"))
                 {
                     <li>@Html.ActionLink("Farmacia", "Index", "Farmacia", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Gestisci Vendite", "List", "Vendita", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
                 }
                 else
