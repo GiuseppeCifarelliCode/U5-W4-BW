@@ -162,11 +162,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ClinicaController.cs" />
     <Compile Include="Controllers\DittaController.cs" />
     <Compile Include="Controllers\FarmaciaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdottoController.cs" />
+    <Compile Include="Controllers\VenditaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +196,7 @@
     <Content Include="Content\assets\Farmacia 2.jpeg" />
     <Content Include="Content\assets\Icon.jpg" />
     <Content Include="Content\assets\Logo.jpg" />
+    <Content Include="Content\assets\padrone.jpg" />
     <Content Include="Content\assets\prodotti.jpg" />
     <Content Include="Content\assets\Clinica2.jpg" />
     <Content Include="Content\assets\vendita.jpg" />
@@ -278,6 +281,15 @@
     <Content Include="Views\Ditta\Details.cshtml" />
     <Content Include="Views\Ditta\Edit.cshtml" />
     <Content Include="Views\Ditta\Index.cshtml" />
+    <Content Include="Views\Clinica\AnimaliList.cshtml" />
+    <Content Include="Views\Clinica\AddVisita.cshtml" />
+    <Content Include="Views\Clinica\AnimaleDetails.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\AddCliente.cshtml" />
+    <Content Include="Views\Cliente\ModifyCliente.cshtml" />
+    <Content Include="Views\Vendita\Index.cshtml" />
+    <Content Include="Views\Vendita\AddVendita.cshtml" />
+    <Content Include="Views\Vendita\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

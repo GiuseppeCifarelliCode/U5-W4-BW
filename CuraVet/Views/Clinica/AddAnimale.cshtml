@@ -7,10 +7,10 @@
 <h2>AddAnimale</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddAnimale", "Clinica", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Animale</h4>
         <hr />
@@ -24,15 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataRegistrazione, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataRegistrazione, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataRegistrazione, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdTipologia, "IdTipologia", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTipologia, "Tipo Animale", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.IdTipologia, new SelectList(ViewBag.ListTipo, "Value", "Text"), new { @class = "form-select" })
                 @Html.ValidationMessageFor(model => model.IdTipologia, "", new { @class = "text-danger" })
@@ -72,14 +64,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdCliente, "IdCliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdCliente, "Padrone", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.IdCliente, new SelectList(ViewBag.ListClienti, "Value", "Text"), new { @class = "form-select" })
                 @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="fotoAnimale">
             @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control", type = "file" } })
@@ -101,4 +93,17 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        let DdCliente = document.getElementById("IdCliente")
+        DdCliente.addEventListener("change", (e) => {
+            if (DdCliente.value != "NULL") {
+                document.getElementById("fotoAnimale").classList.add("d-none")
+            } else {
+                document.getElementById("fotoAnimale").classList.remove("d-none")
+                document.getElementById("fotoAnimale").classList.add("d-flex")
+            }
+        })
+    </script>
 }
+
+

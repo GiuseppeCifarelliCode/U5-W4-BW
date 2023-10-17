@@ -11,12 +11,17 @@
           href="~/Content/assets/Icon.jpg"/>
     @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
-
+<link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg " >
 
+  
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="~/Content/assets/Icon.jpg" alt="Logo" style="max-height: 40px; max-width: 100px"; />
+        </a>
         <div class="collapse navbar-collapse" id="navbarNav">
                 <img src="~/Content/assets/Icon.jpg" style="width: 3%; height: 3%;" class="ms-3" />
                 
@@ -25,13 +30,17 @@
                 
                 @if (User.IsInRole("Vet"))
                 {
-                    <li>@Html.ActionLink("Clinica", "Index", "Clinica", new { area = "" }, new { @class = "nav-link font p-2" })</li>
-                    <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link font" }) </li>
+                    <li>@Html.ActionLink("Clinica", "Index", "Clinica", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
+                    <li>@Html.ActionLink("Tipologia Animali", "TipologiaList", "Clinica", new { area = "" }, new { @class = "nav-link" }) </li>
+                    <li>@Html.ActionLink("Lista Animali", "AnimaliList", "Clinica", new { area = "" }, new { @class = "nav-link" }) </li>
+                    <li>@Html.ActionLink("Aggiungi Cliente", "AddCliente", "Clinica", new { area = "" }, new { @class = "nav-link" }) </li>
                 }
                 else if (User.IsInRole("Far"))
                 {
-                    <li>@Html.ActionLink("Farmacia", "Index", "Farmacia", new { area = "" }, new { @class = "nav-link font p-2" })</li>
-                    <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link font" }) </li>
+                    <li>@Html.ActionLink("Farmacia", "Index", "Farmacia", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Gestisci Vendite", "List", "Vendita", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
                 }
                 else
                 {
@@ -44,8 +53,38 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+        <footer class=" text-center py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Contatti</h4>
+                        <p>Indirizzo: Via Example, 123</p>
+                        <p>Telefono: +123 456 789</p>
+                        <p>Email: info@curavet.com</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <p>&copy; 2023 CuraVet - Sito web creato da:</p>
+                        <p>
+                            <a class="custom-link" href="https://www.linkedin.com/in/giuseppe-cifarelli-fullstack-developer/" target="_blank">Cifarelli Giuseppe</a> -
+                            <a class="custom-link" href="https://www.linkedin.com/in/nicole-beani-613b16289/" target="_blank">Beani Nicole</a> -
+                            <a class="custom-link" href="https://www.linkedin.com/in/paolo-esposito-developer/" target="_blank">Esposito Paolo</a> -
+                            <a class="custom-link" href="https://www.linkedin.com/in/andreas-ubertini-web-developer/" target="_blank">Ubertini Andreas</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4>Link Utili</h4>
+                        <ul class="list-unstyled">
+                            <li><a class="custom-link" href="/terms">Termini e condizioni</a></li>
+                            <li><a class="custom-link" href="/privacy">Informativa sulla privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <p>&copy; 2023 CuraVet. Tutti i diritti riservati.</p>
+            </div>
+            </div>
         </footer>
     </div>
 
