@@ -3,13 +3,51 @@
     ViewBag.Title = "Index";
 }
 
-<h3>Ricerca animale per microchip</h3>
-<input type="text" id="ChipNr" />
-<input type="button" id="btnCerca" class="btn btn-success rounded-pill" value="Cerca" />
 
-<div id="risultatoRicerca">
-    
+
+
+<div class="card d-flex flex-row my-4 align-items-center">
+    <img src="~/Content/assets/prodotti.jpg" class="card-img-top w-25" alt="Farmaci" />
+    <div class="card-body">
+        <h5 class="card-title">I Nostri Prodotti</h5>
+        <p class="card-text">Visualizza la lista dei prodotti, aggiungine di nuovi o modifica i Prodotti già presenti in Magazzino! </p>
+        @Html.ActionLink("Visualizza", "Index", "Prodotto", "", new { @class = "btn btn-custom" })
+    </div>
 </div>
+
+<div class="card d-flex flex-row-reverse my-4 align-items-center">
+    <img src="~/Content/assets/padrone.jpg" class="card-img-top w-50" alt="Vendita" />
+    <div class="card-body">
+        <h5 class="card-title">Animali In Cura</h5>
+        <p class="card-text">Visualizza la lista di tutti gli animali che abbiamo trattato presso la nostra struttura</p>
+        <a href="/Clinica/AnimaliList" class="btn btn-custom">Lista Animali</a>
+    </div>
+</div>
+
+<div class="card d-flex flex-row my-4 align-items-center">
+    <img src="~/Content/assets/vendita.jpg" class="card-img-top w-50" alt="Vendita" />
+    <div class="card-body">
+        <h5 class="card-title">Registra una nuova Vendita</h5>
+        <p class="card-text">Visualizza la lista dei Prodotti e salva una Nuova Vendita!</p>
+        @Html.ActionLink("Registra Vendita", "AddVendita", "", new { @class = "btn btn-custom" })
+    </div>
+</div>
+
+<div class="card d-flex flex-row-reverse my-4 align-items-center">
+    <img src="~/Content/assets/cerca.jpg" class="card-img-top w-50" alt="Cerca" />
+    <div class="card-body">
+        <h3>Ricerca animale per numero di microchip</h3>
+        <div class="d-flex align-items-center gap-3">
+            <input type="text" id="ChipNr" class="w-100 my-2 form-control" />
+            <input type="button" id="btnCerca" class="btn btn-success rounded-pill" value="Cerca" />
+        </div>
+        <div id="risultatoRicerca">
+
+        </div>
+    </div>
+
+</div>
+
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
@@ -36,8 +74,8 @@
                 })
 
             })
-        
+
         })
-        
+
     </script>
-    }
+}
