@@ -280,6 +280,7 @@
     <Content Include="Views\Clinica\AnimaliList.cshtml" />
     <Content Include="Views\Clinica\AddVisita.cshtml" />
     <Content Include="Views\Clinica\AnimaleDetails.cshtml" />
+    <Content Include="Views\Clinica\ModifyVisita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
