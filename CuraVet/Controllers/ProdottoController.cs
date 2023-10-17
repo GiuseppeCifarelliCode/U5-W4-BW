@@ -12,7 +12,21 @@ namespace CuraVet.Controllers
 {
     public class ProdottoController : Controller
     {
-        private ModelDBContext db = new ModelDBContext();
+        private static ModelDBContext db = new ModelDBContext();
+        public List<Ditta> ditte = db.Ditta.ToList();
+        public List<SelectListItem> d
+        {
+            get
+            {
+                List<SelectListItem> list = new List<SelectListItem>();
+                foreach ( Ditta ditta in ditte)
+                {
+                    SelectListItem item = new SelectListItem { Text = ditta.Nome, Value=ditta.IdDitta.ToString()};
+                    list.Add(item);
+                }
+                return list;
+            }
+        }
 
         // GET: Prodotto
         public ActionResult Index()
@@ -39,7 +53,7 @@ namespace CuraVet.Controllers
         // GET: Prodotto/Create
         public ActionResult Create()
         {
-            ViewBag.IdDitta = new SelectList(db.Ditta, "IdDitta", "Nome");
+            ViewBag.Ditte = d;
             return View();
         }
 
