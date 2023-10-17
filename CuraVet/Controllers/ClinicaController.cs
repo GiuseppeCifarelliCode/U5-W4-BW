@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CuraVet.Controllers
 {
-    [Authorize(Roles ="Vet")]
+    [Authorize(Roles = "Vet")]
     public class ClinicaController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
@@ -84,7 +84,7 @@ namespace CuraVet.Controllers
             List<SelectListItem> listTipo = new List<SelectListItem>();
             List<Cliente> c = db.Cliente.ToList();
             List<Tipologia> t = db.Tipologia.ToList();
-            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone"};
+            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone" };
             listClienti.Add(itemDefault);
             foreach (Cliente cl in c)
             {
@@ -134,6 +134,7 @@ namespace CuraVet.Controllers
             {
                 v.DataVisita = DateTime.Now;
                 v.IdAnimale = (int)TempData["Id"];
+                v.Attiva = true;
                 db.Visita.Add(v);
                 db.SaveChanges();
                 return RedirectToAction("AnimaliList");
@@ -149,6 +150,28 @@ namespace CuraVet.Controllers
         {
             Animale a = db.Animale.Find(id);
             return View(a);
+        }
+        [HttpGet]
+        public ActionResult ModifyVisita(int id)
+        {
+            Visita v = db.Visita.Find(id);
+            return View(v);
+        }
+        [HttpPost]
+        public ActionResult ModifyVisita(Visita v)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(v).State = EntityState.Modified;
+                db.SaveChanges();
+                int id = v.IdAnimale;
+                return RedirectToAction("AnimaleDetails", new { 
+                    id});
+            }
+            else
+            {
+                return View(v);
+            }
         }
 
     }

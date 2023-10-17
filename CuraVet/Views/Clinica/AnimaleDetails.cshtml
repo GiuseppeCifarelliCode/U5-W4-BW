@@ -96,6 +96,7 @@
         @foreach (CuraVet.Models.Visita v in Model.Visita)
         {
             <div class="border border-1 p-3">
+                <a href="/Clinica/ModifyVisita/@v.IdVisita" class="btn btn-primary">Modifica</a>
                 <p><strong>Tipo di esame:</strong>@v.TipoEsame</p>
                 <p><strong>Descrizione:</strong>@v.Descrizione</p>
                 <p><strong>Data:</strong>@v.DataVisita.ToShortDateString()</p>

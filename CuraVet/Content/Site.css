@@ -11,3 +11,42 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.custom1 {
+    background-color: rgb(4,116,124);
+    color: white;
+}
+    .custom1 .nav-link {
+        color: white;
+        transition: color 0.3s;
+    }
+
+        .custom1 .nav-link:hover {
+            color: black;
+        }
+
+.btn-custom {
+    background-color: rgb(4, 116, 124);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+  
+    .btn-custom:hover {
+        background-color: white;
+        color: rgb(4, 116, 124);
+    }
+
+.custom-link {
+    color: rgb(4, 116, 124);
+    text-decoration: none; 
+    transition: color 0.3s;
+}
+
+    
+    .custom-link:hover {
+        color: black;
+    }
