@@ -53,54 +53,7 @@ namespace CuraVet.Controllers
         {
             return View(db.Tipologia.ToList());
         }
-        [HttpGet]
-        public ActionResult AddCliente()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddCliente(Cliente c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Cliente.Add(c);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-
-        }
-        public ActionResult ClientiList()
-        {
-            return View(db.Cliente.ToList());
-        }
-        public ActionResult DeleteCliente(int id)
-        {
-            Cliente c = db.Cliente.Find(id);
-            db.Cliente.Remove(c);
-            db.SaveChanges();
-            return RedirectToAction("ClientiList");
-        }
-        [HttpGet]
-        public ActionResult ModifyCliente(int id)
-        {
-            Cliente c = db.Cliente.Find(id);
-            return View(c);
-        }
-        [HttpPost]
-        public ActionResult ModifyCliente(Cliente c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(c).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ClientiList");
-            }
-            else
-            {
-                return View(c);
-            }
-        }
+       
         [HttpGet]
         public ActionResult AddAnimale()
         {

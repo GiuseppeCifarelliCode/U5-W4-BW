@@ -15,15 +15,24 @@
 </div>
 
 <div class="card d-flex flex-row-reverse my-4 align-items-center">
-    <img src="~/Content/assets/vendita.jpg" class="card-img-top w-50" alt="Vendita" />
+    <img src="~/Content/assets/padrone.jpg" class="card-img-top w-50" alt="Vendita" />
     <div class="card-body">
         <h5 class="card-title">I Nostri Clienti</h5>
-        <p class="card-text">Visualizza la lista dei nostri Clienti, registrane di nuovi, modifica i Clienti Registrati o salva una Nuova Vendita!</p>
-            @Html.ActionLink("Aggiungi Cliente", "AddCliente", "", new { @class = "btn btn-primary" })
+        <p class="card-text">Visualizza la lista dei nostri Clienti, registrane di nuovi o modifica i Clienti Registrati</p>
+            @Html.ActionLink("Aggiungi Cliente", "Index", "Cliente","", new { @class = "btn btn-primary" })
     </div>
 </div>
 
 <div class="card d-flex flex-row my-4 align-items-center">
+    <img src="~/Content/assets/vendita.jpg" class="card-img-top w-50" alt="Vendita" />
+    <div class="card-body">
+        <h5 class="card-title">Registra una nuova Vendita</h5>
+        <p class="card-text">Visualizza la lista dei Prodotti e salva una Nuova Vendita!</p>
+        @Html.ActionLink("Registra Vendita", "AddVendita", "", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class="card d-flex flex-row-reverse my-4 align-items-center">
     <img src="~/Content/assets/cerca.jpg" class="card-img-top w-50" alt="Cerca" />
     <div class="card-body">
         <h5 class="card-title">Cerca un Prodotto</h5>
