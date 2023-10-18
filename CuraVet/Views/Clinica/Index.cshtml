@@ -29,7 +29,7 @@
     <div class="card-body">
         <h5 class="card-title">Registra un nuovo cliente</h5>
         <p class="card-text">Registra i dati di un nuovo cliente!</p>
-        @Html.ActionLink("Registra Cliente", "AddCliente","Cliente", "", new { @class = "btn btn-custom" })
+        @Html.ActionLink("Registra Cliente", "AddCliente", "Cliente", "", new { @class = "btn btn-custom" })
     </div>
 </div>
 
@@ -38,7 +38,8 @@
     <div class="card-body">
         <h3>Controlla il numero dei ricoveri attivi</h3>
         <div class="d-flex align-items-center gap-3">
-            <input type="button" id="btnCerca" class="btn btn-success rounded-pill" value="Mostra" />
+            <input type="button" id="btnCerca" class="btn btn-custom rounded-pill" value="Mostra" />
+            <input type="button" id="btnChiudi" class="btn btn-custom rounded-pill" value="Chiudi" />
         </div>
         <p id="totNr" class="my-2"></p>
         <div id="risultatoRicerca">
@@ -59,22 +60,28 @@
                     success: function (data) {
                         $("#risultatoRicerca").empty();
                         $("#totNr").empty()
-                        let counter= 0
+                        let counter = 0
                         $.each(data, function (i, q) {
                             counter++
                             var p = `<p>
-                               Nome: <strong>${q.Nome}</strong>
-                               Razza: <strong>${q.Razza}</strong>
-                               </br>
-                               Nr Microchip: <strong>${q.Microchip}</strong>
-                               Data ricovero: <strong>${q.DataVisita}</strong>
-                                </p>`
+                                   Nome: <strong>${q.Nome}</strong>
+                                   Razza: <strong>${q.Razza}</strong>
+                                   </br>
+                                   Nr Microchip: <strong>${q.Microchip}</strong>
+                                   Data ricovero: <strong>${q.DataVisita}</strong>
+                                    </p>`
                             $("#risultatoRicerca").append(p);
                         });
                         $("#totNr").append("Numero totali ricoveri attivi: " + counter)
+
                     }
                 })
 
+            })
+            $("#btnChiudi").click(function () {
+                $("#risultatoRicerca").empty();
+                $("#totNr").empty()
+                
             })
 
         })
