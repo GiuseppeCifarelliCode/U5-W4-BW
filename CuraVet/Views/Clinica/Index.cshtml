@@ -55,7 +55,7 @@
                 var ChipNr = $("#ChipNr").val();
                 $.ajax({
                     method: 'POST',
-                    url: 'GetAnimaleByChipNr',
+                    url: '/Clinica/GetAnimaleByChipNr',
                     data: { ChipNr: ChipNr },
                     success: function (data) {
                         $("#risultatoRicerca").empty();
