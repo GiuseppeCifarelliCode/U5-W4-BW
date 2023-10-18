@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
                 <img src="~/Content/assets/Icon.jpg" style="width: 3%; height: 3%;" class="ms-3" />
                 
-            <ul class="navbar-nav w-100 d-flex align-items-center mx-2 ">
+            <ul class="navbar-nav w-100 d-flex align-items-center mx-2 justify-content-around">
                 <li>@Html.ActionLink("CuraVet", "Index", "Home", new { area = "" }, new { @class = "nav-link fs-3 ps-0" })</li>
                 
                 @if (User.IsInRole("Vet"))
