@@ -176,22 +176,31 @@ namespace CuraVet.Controllers
         }
         public JsonResult GetAnimaleByChipNr(string ChipNr)
         {
+            
             List<Animale> a = db.Animale.Where(x => x.Microchip == ChipNr).ToList();
-            var formattedAnimals = a.Select(o => new
+            if(a.Count == 0)
             {
-                o.IdAnimale,
-                o.Nome,
-                o.IdTipologia,
-                o.Razza,
-                o.Colore,
-                DataNascita = o.DataNascita.ToString(),
-                DataReg = o.DataRegistrazione.ToString(),
-                o.Microchip,
-                o.IdCliente,
-                o.Foto
+                string s = "Nessun Risultato";
+                return Json(s, JsonRequestBehavior.AllowGet);
+            }
+            else {
+                var formattedAnimals = a.Select(o => new
+                {
+                    o.IdAnimale,
+                    o.Nome,
+                    o.IdTipologia,
+                    o.Razza,
+                    o.Colore,
+                    DataNascita = o.DataNascita.ToString(),
+                    DataReg = o.DataRegistrazione.ToString(),
+                    o.Microchip,
+                    o.IdCliente,
+                    o.Foto
 
-            }).ToList();
-            return Json(formattedAnimals, JsonRequestBehavior.AllowGet);
+                }).ToList();
+                return Json(formattedAnimals, JsonRequestBehavior.AllowGet);
+            }
+
         }
         public JsonResult GetRicoveriAttivi()
         {

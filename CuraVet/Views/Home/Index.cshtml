@@ -49,7 +49,8 @@
         <div class="card d-flex flex-row-reverse my-4 align-items-center">
             <img src="~/Content/assets/cerca.jpg" class="card-img-top w-50" alt="Cerca" />
             <div class="card-body">
-                <h3 class="my-4">Ricerca animale per numero di microchip</h3>
+                <h2 class="my-4">Hai Perso il Tuo Animale?</h2>
+                <h3 class="my-4">Ricerca per numero di microchip</h3>
                 <div class="d-flex align-items-center gap-3">
                     <input type="text" id="ChipNr" class="w-100 my-2 form-control" />
                     <input type="button" id="btnCerca" class="btn btn-success rounded-pill" value="Cerca" />
@@ -74,16 +75,21 @@
                     success: function (data) {
                         $("#risultatoRicerca").empty();
                         console.log(data)
-                        $.each(data, function (i, q) {
-                            var p = `<p>
+                        if (data[0].Nome !=null) {
+                            $.each(data, function (i, q) {
+                                var p = `<p>
                                Nome: <strong>${q.Nome}</strong>
                                Razza: <strong>${q.Razza}</strong>
                                Colore: <strong>${q.Colore}</strong>
                                Nr Microchip: <strong>${q.Microchip}</strong>
                                <a href="/Clinica/AnimaleDetails/${q.IdAnimale}" class="btn btn-primary">Dettagli</a>
                                 </p>`
+                                $("#risultatoRicerca").append(p);
+                            });
+                        } else {
+                            var p = `<p>Nessun Risultato</p>`
                             $("#risultatoRicerca").append(p);
-                        });
+                        }
                     }
                 })
 
