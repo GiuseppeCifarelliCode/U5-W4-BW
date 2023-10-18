@@ -28,7 +28,7 @@
     <div class="card-body">
         <h5 class="card-title">Registra una nuova Vendita</h5>
         <p class="card-text">Visualizza la lista dei Prodotti e salva una Nuova Vendita!</p>
-        @Html.ActionLink("Registra Vendita", "AddVendita", "", new { @class = "btn btn-custom" })
+        @Html.ActionLink("Registra Vendita", "Index", "Vendita","", new { @class = "btn btn-custom" })
     </div>
 </div>
 
@@ -38,7 +38,7 @@
         <h5 class="card-title">Cerca un Prodotto</h5>
         <input id="nameField" placeholder="Inserisci Nome Prodotto"/>
         <p class="card-text">Cerca un Prodotto specifico per Nome!</p>
-        @Html.ActionLink("Cerca", "Detail", "Prodotto","", new { @class = "btn btn-custom", @id="searchButton" })
+        <button id="searchButton" class="btn btn-custom">Cerca</button>
     </div>
 </div>
 
@@ -47,7 +47,16 @@
   <script>
       $(document).ready(function () {
           $("#searchButton").click(function () {
-              alert("Ciao")
+              var productName = $("#nameField").val();
+              $.ajax({
+                  url: './Prodotto/Search',
+                  type: 'GET',
+                  data: { productName: productName },
+                  success: function (data) {
+                      console.log(data);
+                      window.location.href = '/Prodotto/SearchList'
+                  },
+              });
           })
       })
     </script>

@@ -109,29 +109,45 @@ namespace CuraVet.Controllers
         // GET: Prodotto/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prodotto prodotto = db.Prodotto.Find(id);
-            if (prodotto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(prodotto);
-        }
-
-        // POST: Prodotto/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
             Prodotto prodotto = db.Prodotto.Find(id);
             db.Prodotto.Remove(prodotto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        
+        public ActionResult Search(string productName)
+        {
+            List<Prodotto> productList = db.Prodotto.Where(p => p.Nome.Contains(productName)).ToList();
+            var formattedProduct = productList.Select(p => new
+            {
+                p.IdProdotto,
+                p.Nome,
+                p.IdDitta,
+                p.Tipologia,
+                p.Descrizione,
+                p.Armadio,
+                p.Cassetto,
+                p.Presente,
+                p.Prezzo,
+            }).ToList();
+            TempData["ProductList"] = productList;
+            return Json(formattedProduct,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SearchList()
+        {
+            List<Prodotto> productList = TempData["ProductList"] as List<Prodotto>;
+
+            if (productList != null)
+            {
+                return View(productList);
+            }
+            else
+            {
+                return View(new List<Prodotto>());
+            }
+        }
+
+
     }
 }
