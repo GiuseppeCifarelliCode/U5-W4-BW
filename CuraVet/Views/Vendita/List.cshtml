@@ -4,7 +4,40 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<div class="d-flex justify-content-between">
+    <div class="accordion accordion-borderless w-50 mx-2" id="accordionFlush1X">
+        <input type="date" class="text-center" id="dateField" />
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOneX">
+                <button class="accordion-button" type="button" data-mdb-toggle="collapse" id="buttonForDate"
+                        data-mdb-target="#flush-collapseOneX" aria-expanded="true" aria-controls="flush-collapseOneX">
+                    Visualizza Medicinali venduti in una Data selezionata
+                </button>
+            </h2>
+            <div id="flush-collapseOneX" class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingOneX" data-mdb-parent="#accordionFlush1X">
+                <div class="accordion-body" id="prodottiPerData">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion accordion-borderless w-50 mx-2" id="accordionFlush2X">
+        <input placeholder="Inserisci CF" class="text-center" id="CFField" />
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwoX">
+                <button class="accordion-button" type="button" data-mdb-toggle="collapse" id="buttonForCF"
+                        data-mdb-target="#flush-collapseTwoX" aria-expanded="true" aria-controls="flush-collapseTwoX">
+                    Visualizza Medicinali venduti per CF Cliente
+                </button>
+            </h2>
+            <div id="flush-collapseTwoX" class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingTwoX" data-mdb-parent="#accordionFlush2X">
+                <div class="accordion-body" id="prodottiPerCF">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <table class="table">
     <tr>
@@ -26,28 +59,73 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Cognome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prodotto.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantita)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RicettaMedica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdVendita }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdVendita })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prodotto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RicettaMedica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdVendita }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdVendita })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#buttonForDate").click(function () {
+                $("#prodottiPerData").empty();
+                var date = $("#dateField").val()
+                $.ajax({
+                    method: 'GET',
+                    url: "GetProductByDate",
+                    data: {date: date},
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            console.log(data);
+                            var licurrent = "<li>" +
+                                "#"+v.IdProdotto + " " +"Quantità: " +v.Quantita
+                                "</li>";
+                            $("#prodottiPerData").append(licurrent);
+                        });
+                    }
+                });
+            });
+
+            $("#buttonForCF").click(function () {
+                $("#prodottiPerCF").empty();
+                var cf = $("#CFField").val()
+                $.ajax({
+                    method: 'GET',
+                    url: "GetProductByCF",
+                    data: { cf: cf },
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            var licurrent = "<li>" +
+                              "CF: "+ cf + " "+ "#" + v.IdProdotto + " " + "Quantità: " + v.Quantita
+                            "</li>";
+                                "</li>";
+                            $("#prodottiPerCF").append(licurrent);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
