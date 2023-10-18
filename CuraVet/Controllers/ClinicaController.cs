@@ -55,7 +55,7 @@ namespace CuraVet.Controllers
         }
        
         [HttpGet]
-        public ActionResult AddAnimale()
+        public ActionResult AddAnimal()
         {
             List<SelectListItem> listClienti = new List<SelectListItem>();
             List<SelectListItem> listTipo = new List<SelectListItem>();
@@ -78,7 +78,7 @@ namespace CuraVet.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddAnimale(Animale a, HttpPostedFileBase Foto)
+        public ActionResult AddAnimal(Animale a, HttpPostedFileBase Foto)
         {
             List<SelectListItem> listClienti = new List<SelectListItem>();
             List<SelectListItem> listTipo = new List<SelectListItem>();
