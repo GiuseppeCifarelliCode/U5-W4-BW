@@ -55,5 +55,35 @@ namespace CuraVet.Controllers
         {
             return View(db.Vendita.ToList());
         }
+
+        public ActionResult GetProductByDate(DateTime date)
+        {
+            List<Vendita> vendite = db.Vendita.Where(v => v.Data == date).ToList();
+            var formattedVendite = vendite.Select(v => new
+            {
+                v.IdVendita,
+                v.IdCliente,
+                v.IdProdotto,
+                v.Quantita,
+                v.RicettaMedica,
+                Data = v.Data.ToString("yyyy-MM-dd"),
+            }).ToList();
+            return Json(formattedVendite,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetProductByCF(string cf)
+        {
+            List<Vendita> vendite = db.Vendita.Where(v => v.Cliente.CF == cf).ToList();
+            var formattedVendite = vendite.Select(v => new
+            {
+                v.IdVendita,
+                v.IdCliente,
+                v.IdProdotto,
+                v.Quantita,
+                v.RicettaMedica,
+                Data = v.Data.ToString("yyyy-MM-dd"),
+            }).ToList();
+            return Json(formattedVendite, JsonRequestBehavior.AllowGet);
+        }
     }
 }
