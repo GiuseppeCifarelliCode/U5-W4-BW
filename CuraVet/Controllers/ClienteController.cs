@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CuraVet.Controllers
 {
+    [Authorize(Roles = "Far, Vet")]
     public class ClienteController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
