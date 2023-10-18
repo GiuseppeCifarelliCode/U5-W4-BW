@@ -4,27 +4,27 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>User</h4>
+    <div class="d-flex justify-content-evenly ">
+   <div class="form-horizontal d-flex justify-content-center align-items-center flex-column p-5">
+       <h2 class="m-0">𝐋𝐨𝐠𝐢𝐧</h2>
+       
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2 mb-1" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control mb-4" } })
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 mb-1" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
@@ -32,10 +32,12 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-10 mt-2">
                 <input type="submit" value="Login" class="btn btn-custom my-2" />
             </div>
         </div>
+    </div>
+        <img src="~/Content/assets/dog2.png" class="w-50"/>
     </div>
 }
 @if (ViewBag.Error != null)
