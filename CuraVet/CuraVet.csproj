@@ -191,12 +191,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\assets\Cats.JPEG" />
+    <Content Include="Content\assets\CatBox.png" />
+    <Content Include="Content\assets\cats3.png" />
     <Content Include="Content\assets\cerca.jpg" />
     <Content Include="Content\assets\Cinica1.jpg" />
+    <Content Include="Content\assets\dog2.png" />
+    <Content Include="Content\assets\dogC.png" />
     <Content Include="Content\assets\Farmacia 2.jpeg" />
     <Content Include="Content\assets\Icon.jpg" />
-    <Content Include="Content\assets\Logo.jpg" />
     <Content Include="Content\assets\padrone.jpg" />
     <Content Include="Content\assets\prodotti.jpg" />
     <Content Include="Content\assets\Clinica2.jpg" />

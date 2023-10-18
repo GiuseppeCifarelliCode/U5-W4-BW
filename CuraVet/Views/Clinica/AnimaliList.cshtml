@@ -4,78 +4,48 @@
     ViewBag.Title = "AnimaliList";
 }
 
-<h2>AnimaliList</h2>
 
-<p>
-    @Html.ActionLink("Aggiungi un Animale", "AddAnimal")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipologia.Tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataRegistrazione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Razza)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Colore)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNascita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Microchip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th></th>
-    </tr>
+<div class="d-flex gap-3">
+    <p>
+        @Html.ActionLink("Home", "Index")
+    </p>
+    <p>
+        @Html.ActionLink("Aggiungi un Animale", "AddAnimal")
+    </p>
+    <p>
+        @Html.ActionLink("Aggiungi un tipo di animale", "AddTipologia")
+    </p>
+</div>
+<h2 class="text-center my-3">Storico degli animali curati</h2>
+    @foreach (CuraVet.Models.Animale a in Model)
+    {
+        <div class="card">
+            <div class="card-header">Tipo di animale: <strong>@a.Tipologia.Tipo</strong></div>
+            <div class="d-flex justify-content-between">
+                <div class="card-body">
+                    <h5 class="card-title">Registrato il: <strong>@a.DataRegistrazione.ToShortDateString()</strong></h5>
+                    <p class="card-text">Nome: <strong>@a.Nome</strong></p>
+                    @if (a.DataNascita != null)
+                    {<p class="card-text">Data di nascita: <strong>@String.Format("{0:dd/MM/yyyy}", a.DataNascita)</strong></p>}
+                    <p class="card-text">Colore: <strong>@a.Colore</strong></p>
+                    <p class="card-text">Razza: <strong>@a.Razza</strong></p>
+                    @if (a.Cliente != null)
+                    {
+                        <p class="card-text">Nome Propietario: <strong>@a.Cliente.Nome @a.Cliente.Cognome</strong></p>}
+                    else
+                    {
+                        <p class="card-text">Nome Propietario: <strong>N.D</strong></p>
+                    }
+                    <div class="d-flex gap-3">
+                        @Html.ActionLink("Dettagli", "AnimaleDetails", new { id = a.IdAnimale }, new { @class = "btn btn-custom" })
+                        @Html.ActionLink("Delete", "Delete", new { id = a.IdAnimale }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+                    @if (a.Foto != null)
+                    {<img class="img-thumbnail" src="~/Content/assets/@a.Foto" width="200"/>}
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipologia.Tipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataRegistrazione)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Razza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Colore)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataNascita)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Microchip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.ActionLink("Aggiungi Visita", "AddVisita", new { id=item.IdAnimale }) |
-            @Html.ActionLink("Dettagli", "AnimaleDetails", new { id=item.IdAnimale }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdAnimale })
-        </td>
-    </tr>
-}
+            </div>
+        </div>
+    }
 
-</table>
+

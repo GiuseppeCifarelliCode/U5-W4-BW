@@ -29,9 +29,7 @@
                 {
                     <li>@Html.ActionLink("Clinica", "Index", "Clinica", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" }) </li>
-                    <li>@Html.ActionLink("Tipologia Animali", "TipologiaList", "Clinica", new { area = "" }, new { @class = "nav-link" }) </li>
-                    <li>@Html.ActionLink("Lista Animali", "AnimaliList", "Clinica", new { area = "" }, new { @class = "nav-link" }) </li>
-                    <li>@Html.ActionLink("Aggiungi Cliente", "AddCliente", "Clinica", new { area = "" }, new { @class = "nav-link" }) </li>
+
                 }
                 else if (User.IsInRole("Far"))
                 {

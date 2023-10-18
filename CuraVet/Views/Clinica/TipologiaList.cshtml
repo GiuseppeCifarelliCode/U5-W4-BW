@@ -7,14 +7,18 @@
 <h2>TipologiaList</h2>
 @if (ViewBag.Message != null)
 {
-<div class="alert alert-primary">
-    @ViewBag.Message
-</div>
+    <div class="alert alert-primary">
+        @ViewBag.Message
+    </div>
 }
-
-<p>
-    @Html.ActionLink("Aggiungi Tipologia", "AddTipologia")
-</p>
+<div class="d-flex gap-3">
+    <p>
+        @Html.ActionLink("Indietro", "AnimaliList")
+    </p>
+    <p>
+        @Html.ActionLink("Aggiungi Tipologia", "AddTipologia")
+    </p>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -23,15 +27,16 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
-        </td>
-        <td>
-            @Html.ActionLink("Elimina", "DeleteTipologia", new { id=item.IdTipologia })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.ActionLink("Elimina", "DeleteTipologia", new { id = item.IdTipologia })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -119,7 +119,8 @@ namespace CuraVet.Controllers
         }
         public ActionResult AnimaliList()
         {
-            return View(db.Animale.ToList());
+            List<Animale> list = db.Animale.ToList();
+            return View(list);
         }
         [HttpGet]
         public ActionResult AddVisita(int id)
@@ -175,22 +176,49 @@ namespace CuraVet.Controllers
         }
         public JsonResult GetAnimaleByChipNr(string ChipNr)
         {
+            
             List<Animale> a = db.Animale.Where(x => x.Microchip == ChipNr).ToList();
-            var formattedAnimals = a.Select(o => new
+            if(a.Count == 0)
             {
+                string s = "Nessun Risultato";
+                return Json(s, JsonRequestBehavior.AllowGet);
+            }
+            else {
+                var formattedAnimals = a.Select(o => new
+                {
+                    o.IdAnimale,
+                    o.Nome,
+                    o.IdTipologia,
+                    o.Razza,
+                    o.Colore,
+                    DataNascita = o.DataNascita.ToString(),
+                    DataReg = o.DataRegistrazione.ToString(),
+                    o.Microchip,
+                    o.IdCliente,
+                    o.Foto
+
+                }).ToList();
+                return Json(formattedAnimals, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        public JsonResult GetRicoveriAttivi()
+        {
+            List<Visita> v = db.Visita.Where(x => x.Attiva == true).ToList();
+            var formatted = v.Select(o => new
+            {
+                o.IdVisita,
+                o.TipoEsame,
+                o.Descrizione,
+                o.Attiva,
                 o.IdAnimale,
-                o.Nome,
-                o.IdTipologia,
-                o.Razza,
-                o.Colore,
-                DataNascita = o.DataNascita.ToString(),
-                DataReg = o.DataRegistrazione.ToString(),
-                o.Microchip,
-                o.IdCliente,
-                o.Foto
+                DataVisita = o.DataVisita.ToString("yyyy-MM-dd"),
+                o.Animale.Nome,
+                o.Animale.Razza,
+                o.Animale.Microchip
 
             }).ToList();
-            return Json(formattedAnimals, JsonRequestBehavior.AllowGet);
+            return Json(formatted, JsonRequestBehavior.AllowGet);
         }
 
     }
