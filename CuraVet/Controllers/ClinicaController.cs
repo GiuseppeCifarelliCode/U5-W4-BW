@@ -119,7 +119,8 @@ namespace CuraVet.Controllers
         }
         public ActionResult AnimaliList()
         {
-            return View(db.Animale.ToList());
+            List<Animale> list = db.Animale.ToList();
+            return View(list);
         }
         [HttpGet]
         public ActionResult AddVisita(int id)
