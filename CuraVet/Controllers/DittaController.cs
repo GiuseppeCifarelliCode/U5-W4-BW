@@ -10,6 +10,7 @@ using CuraVet.Models;
 
 namespace CuraVet.Controllers
 {
+    [Authorize(Roles = "Far")]
     public class DittaController : Controller
     {
         private ModelDBContext db = new ModelDBContext();

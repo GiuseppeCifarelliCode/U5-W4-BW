@@ -10,6 +10,7 @@ using CuraVet.Models;
 
 namespace CuraVet.Controllers
 {
+    [Authorize(Roles = "Far")]
     public class ProdottoController : Controller
     {
         private static ModelDBContext db = new ModelDBContext();
