@@ -27,21 +27,23 @@
 <div class="card d-flex flex-row my-4 align-items-center">
     <img src="~/Content/assets/vendita.jpg" class="card-img-top w-50" alt="Vendita" />
     <div class="card-body">
-        <h5 class="card-title">Registra una nuova Vendita</h5>
-        <p class="card-text">Visualizza la lista dei Prodotti e salva una Nuova Vendita!</p>
-        @Html.ActionLink("Registra Vendita", "AddVendita", "", new { @class = "btn btn-custom" })
+        <h5 class="card-title">Registra un nuovo cliente</h5>
+        <p class="card-text">Registra i dati di un nuovo cliente!</p>
+        @Html.ActionLink("Registra Cliente", "AddCliente", "Cliente", "", new { @class = "btn btn-custom" })
     </div>
 </div>
 
 <div class="card d-flex flex-row-reverse my-4 align-items-center">
     <img src="~/Content/assets/cerca.jpg" class="card-img-top w-50" alt="Cerca" />
     <div class="card-body">
-        <h3>Ricerca animale per numero di microchip</h3>
+        <h3>Controlla il numero dei ricoveri attivi</h3>
         <div class="d-flex align-items-center gap-3">
-            <input type="text" id="ChipNr" class="w-100 my-2 form-control" />
-            <input type="button" id="btnCerca" class="btn btn-success rounded-pill" value="Cerca" />
+            <input type="button" id="btnCerca" class="btn btn-custom rounded-pill" value="Mostra" />
+            <input type="button" id="btnChiudi" class="btn btn-custom rounded-pill" value="Chiudi" />
         </div>
+        <p id="totNr" class="my-2"></p>
         <div id="risultatoRicerca">
+
 
         </div>
     </div>
@@ -52,27 +54,34 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btnCerca").click(function () {
-                var ChipNr = $("#ChipNr").val();
                 $.ajax({
-                    method: 'POST',
-                    url: '/Clinica/GetAnimaleByChipNr',
-                    data: { ChipNr: ChipNr },
+                    method: 'GET',
+                    url: '/Clinica/GetRicoveriAttivi',
                     success: function (data) {
                         $("#risultatoRicerca").empty();
-                        console.log(data)
+                        $("#totNr").empty()
+                        let counter = 0
                         $.each(data, function (i, q) {
+                            counter++
                             var p = `<p>
-                               Nome: <strong>${q.Nome}</strong>
-                               Razza: <strong>${q.Razza}</strong>
-                               Colore: <strong>${q.Colore}</strong>
-                               Nr Microchip: <strong>${q.Microchip}</strong>
-                               <a href="/Clinica/AnimaleDetails/${q.IdAnimale}" class="btn btn-primary">Dettagli</a>
-                                </p>`
+                                   Nome: <strong>${q.Nome}</strong>
+                                   Razza: <strong>${q.Razza}</strong>
+                                   </br>
+                                   Nr Microchip: <strong>${q.Microchip}</strong>
+                                   Data ricovero: <strong>${q.DataVisita}</strong>
+                                    </p>`
                             $("#risultatoRicerca").append(p);
                         });
+                        $("#totNr").append("Numero totali ricoveri attivi: " + counter)
+
                     }
                 })
 
+            })
+            $("#btnChiudi").click(function () {
+                $("#risultatoRicerca").empty();
+                $("#totNr").empty()
+                
             })
 
         })
