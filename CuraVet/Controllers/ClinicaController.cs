@@ -193,6 +193,24 @@ namespace CuraVet.Controllers
             }).ToList();
             return Json(formattedAnimals, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetRicoveriAttivi()
+        {
+            List<Visita> v = db.Visita.Where(x => x.Attiva == true).ToList();
+            var formatted = v.Select(o => new
+            {
+                o.IdVisita,
+                o.TipoEsame,
+                o.Descrizione,
+                o.Attiva,
+                o.IdAnimale,
+                DataVisita = o.DataVisita.ToString("yyyy-MM-dd"),
+                o.Animale.Nome,
+                o.Animale.Razza,
+                o.Animale.Microchip
+
+            }).ToList();
+            return Json(formatted, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
