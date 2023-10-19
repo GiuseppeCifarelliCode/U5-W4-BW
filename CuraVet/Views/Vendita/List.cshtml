@@ -6,8 +6,11 @@
 
 <div class="d-flex justify-content-between">
     <div class="accordion accordion-borderless w-50 mx-2" id="accordionFlush1X">
-        <input type="date" class="text-center" id="dateField" />
-        <div class="accordion-item">
+        <label for="dateField" class="form-label">Seleziona una data</label>
+        <div class="input-group">
+            <input type="date" class="form-control" id="dateField" />
+        </div>
+        <div class="accordion-item mt-3">
             <h2 class="accordion-header" id="flush-headingOneX">
                 <button class="accordion-button btn btn-custom" type="button" data-mdb-toggle="collapse" id="buttonForDate"
                         data-mdb-target="#flush-collapseOneX" aria-expanded="true" aria-controls="flush-collapseOneX">
@@ -22,8 +25,11 @@
         </div>
     </div>
     <div class="accordion accordion-borderless w-50 mx-2" id="accordionFlush2X">
-        <input placeholder="Inserisci CF" class="text-center" id="CFField" />
-        <div class="accordion-item">
+        <label for="CFField" class="form-label">Inserisci CF Cliente</label>
+        <div class="input-group">
+            <input type="text" placeholder="Inserisci CF" class="form-control" id="CFField" />
+        </div>
+        <div class="accordion-item mt-3">
             <h2 class="accordion-header" id="flush-headingTwoX">
                 <button class="accordion-button btn btn-custom" type="button" data-mdb-toggle="collapse" id="buttonForCF"
                         data-mdb-target="#flush-collapseTwoX" aria-expanded="true" aria-controls="flush-collapseTwoX">
@@ -39,52 +45,22 @@
     </div>
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prodotto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RicettaMedica)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th></th>
-    </tr>
-
+<div class="row row-cols-3">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Cognome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prodotto.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantita)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RicettaMedica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdVendita }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdVendita })
-            </td>
-        </tr>
+        <div class="col my-2">
+            <div class="card text-center">
+                <div class="card-header">@item.Cliente.Cognome @item.Cliente.Nome</div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Prodotto.Nome</h5>
+                    <p class="card-text">Quantità: @item.Quantita</p>
+                    <p class="card-text">Ricetta: @item.RicettaMedica</p>
+                </div>
+                <div class="card-footer text-muted">Data: @item.Data.ToShortDateString()</div>
+            </div>
+        </div>
     }
-
-</table>
+</div>
 
 @section scripts{
     <script>

@@ -49,7 +49,7 @@ namespace CuraVet.Controllers
             {
                 db.Entry(c).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ClientiList");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -62,7 +62,7 @@ namespace CuraVet.Controllers
             Cliente c = db.Cliente.Find(id);
             db.Cliente.Remove(c);
             db.SaveChanges();
-            return RedirectToAction("ClientiList");
+            return RedirectToAction("Index");
         }
     }
 }
