@@ -296,6 +296,7 @@
     <Content Include="Views\Vendita\List.cshtml" />
     <Content Include="Views\Prodotto\SearchList.cshtml" />
     <Content Include="Views\Clinica\AddAnimal.cshtml" />
+    <Content Include="Views\Clinica\ModifyAnimale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
