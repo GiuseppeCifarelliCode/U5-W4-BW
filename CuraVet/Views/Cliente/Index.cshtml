@@ -15,11 +15,12 @@
             <div class="card text-center">
                 <div class="card-header text-custom"> <h2>@item.Cognome @item.Nome</h2></div>
                 <div class="card-body">
-                    <h6 class="card-title">CF: @item.CF</h6>
+                    <h4 class="card-title">CF: @item.CF</h4>
                     <p class="card-text"></p>
                     @Html.ActionLink("Modifica", "ModifyCliente", new { id = item.IdCliente }, new { @class = "btn btn-custom" })
+                    @Html.ActionLink("Elimina", "DeleteCliente", new { id = item.IdCliente }, new { @class = "btn btn-custom" })
                 </div>
-                <div class="card-footer text-muted"> @Html.ActionLink("Elimina", "DeleteCliente", new { id = item.IdCliente }, new { @class = "btn btn-custom" })</div>
+                <div class="card-footer text-muted"> </div>
             </div>
         </div>
     }
