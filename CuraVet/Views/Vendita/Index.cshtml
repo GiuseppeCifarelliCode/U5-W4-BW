@@ -9,16 +9,16 @@
     {
         <div class="col my-2">
             <div class="card text-center">
-                <div class="card-header">@item.Nome</div>
+                <div class="card-header text-custom"><h2> @item.Nome </h2> </div>
                 <div class="card-body">
-                    <h5 class="card-title">@item.Tipologia</h5>
-                    <p class="card-text">@item.Descrizione</p>
-                    <p class="card-text">Armadio: @item.Armadio</p>
-                    <p class="card-text">Cassetto: @item.Cassetto</p>
+                    <p class="card-title"><strong class="text-custom">Tipologia: </strong>@item.Tipologia</p>
+                    <p class="card-text"><strong class="text-custom">Descrizione: </strong>@item.Descrizione</p>
+                    <p class="card-text"> <strong class="text-custom">Armadio: </strong> @item.Armadio</p>
+                    <p class="card-text">  <strong class="text-custom"> Cassetto: </strong> @item.Cassetto</p>
                     <p class="card-text"></p>
                     @Html.ActionLink("Aggiungi Vendita", "AddVendita", new { id = item.IdProdotto }, new { @class = "btn btn-custom" })
                 </div>
-                <div class="card-footer text-muted">@item.Ditta.Nome</div>
+                <div class="card-footer text-muted"> <h4> <strong class="text-custom"> @item.Ditta.Nome</strong> </h4> </div>
             </div>
         </div>
     }
