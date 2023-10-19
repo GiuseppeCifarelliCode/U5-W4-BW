@@ -199,6 +199,7 @@
     <Content Include="Content\assets\dogC.png" />
     <Content Include="Content\assets\Farmacia 2.jpeg" />
     <Content Include="Content\assets\Icon.jpg" />
+    <Content Include="Content\assets\labrador.jpg" />
     <Content Include="Content\assets\padrone.jpg" />
     <Content Include="Content\assets\prodotti.jpg" />
     <Content Include="Content\assets\Clinica2.jpg" />
@@ -296,6 +297,7 @@
     <Content Include="Views\Vendita\List.cshtml" />
     <Content Include="Views\Prodotto\SearchList.cshtml" />
     <Content Include="Views\Clinica\AddAnimal.cshtml" />
+    <Content Include="Views\Clinica\ModifyAnimale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

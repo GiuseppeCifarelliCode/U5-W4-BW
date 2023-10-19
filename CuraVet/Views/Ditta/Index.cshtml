@@ -6,38 +6,22 @@
 
 <h2 class="text-center my-2">Lista Ditte</h2>
 
- @Html.ActionLink("Aggiungi Ditta", "Create", "Ditta", "", new { @class = "btn btn-primary" })
+ @Html.ActionLink("Aggiungi Ditta", "Create", "Ditta", "", new { @class = "btn btn-custom" })
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Recapito)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Indirizzo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recapito)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Indirizzo)
-        </td>
-        <td>
-            @Html.ActionLink("Modifica", "Edit", new { id=item.IdDitta }, new {@class= "btn btn-warning"})
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdDitta }, new {@class=" btn btn-danger"})
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row row-cols-3">
+    @foreach (var item in Model)
+    {
+        <div class="col my-2">
+            <div class="card text-center">
+                <div class="card-header">@item.Nome</div>
+                <div class="card-body">
+                    <h5 class="card-title">Telefono: @item.Recapito</h5>
+                    <p class="card-text">Indirizzo: @item.Indirizzo</p>
+                    <p class="card-text"></p>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdDitta }, new { @class = "btn btn-custom" })
+                </div>
+                <div class="card-footer text-muted"> @Html.ActionLink("Elimina", "Delete", new { id = item.IdDitta }, new { @class = "btn btn-custom" })</div>
+            </div>
+        </div>
+    }
+</div>

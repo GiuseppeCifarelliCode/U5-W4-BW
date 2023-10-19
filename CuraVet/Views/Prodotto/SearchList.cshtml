@@ -4,72 +4,24 @@
     ViewBag.Title = "SearchList";
 }
 
-<h2>SearchList</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ditta.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipologia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descrizione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Armadio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cassetto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Presente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prezzo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ditta.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipologia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descrizione)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Armadio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cassetto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Presente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProdotto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProdotto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProdotto })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row row-cols-3">
+    @foreach (var item in Model)
+    {
+        <div class="col my-2">
+            <div class="card text-center">
+                <div class="card-header">@item.Nome</div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Tipologia</h5>
+                    <p class="card-text">@item.Descrizione</p>
+                    <p class="card-text">Ditta: @item.Ditta.Nome</p>
+                    <p class="card-text">Armadio: @item.Armadio</p>
+                    <p class="card-text">Cassetto: @item.Cassetto</p>
+                    <p class="card-text"></p>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdProdotto }, new { @class = "btn btn-custom" })
+                    @Html.ActionLink("Elimina", "Delete", new { id = item.IdProdotto }, new { @class = "btn btn-custom" })
+                </div>
+                <div class="card-footer text-muted">Presente: @Html.DisplayFor(model => item.Presente)</div>
+            </div>
+        </div>
+    }
+</div>

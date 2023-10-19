@@ -68,6 +68,9 @@ li{
     color: white;
 }
     
+.text-custom {
+    color: red !important
+}
 
 .btn-custom, btn-default {
     background-color: rgb(4, 116, 124);
