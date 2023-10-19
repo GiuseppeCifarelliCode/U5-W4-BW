@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     <div class="d-flex justify-content-evenly  ">
         <div class="form-horizontal d-flex justify-content-center align-items-center flex-column p-5">
-            <h4>𝐂𝐫𝐞𝐚 𝐮𝐧𝐚 𝐧𝐮𝐨𝐯𝐚 𝐝𝐢𝐭𝐭𝐚</h4>
+            <h3 class="text-custom"><strong> Crea Nuova Ditta </strong> </h3>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default m-2" id="bottoneNewDitta" />
+                    <input type="submit" value="Create" class="btn btn-custom m-2" id="bottoneNewDitta" />
                 </div>
             </div>
         </div>
