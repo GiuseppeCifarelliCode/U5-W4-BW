@@ -203,6 +203,7 @@
     <Content Include="Content\assets\padrone.jpg" />
     <Content Include="Content\assets\prodotti.jpg" />
     <Content Include="Content\assets\Clinica2.jpg" />
+    <Content Include="Content\assets\searchcat.png" />
     <Content Include="Content\assets\vendita.jpg" />
     <Content Include="Content\assets\Farmacia 1.jpeg" />
     <Content Include="Content\bootstrap-grid.css" />

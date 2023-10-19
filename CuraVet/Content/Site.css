@@ -65,9 +65,12 @@ li{
     background-color: rgb(4,116,124);
     color: white;
 }
-    
 
-.btn-custom {
+.text-custom {
+    color: rgb(4,116,124);
+}
+
+.btn-custom, btn-default {
     background-color: rgb(4, 116, 124);
     color: white;
     border: none;
@@ -78,6 +81,10 @@ li{
 
   
     .btn-custom:hover {
+        background-color: white;
+        color: rgb(4, 116, 124);
+    }
+    .btn-default:hover {
         background-color: white;
         color: rgb(4, 116, 124);
     }
@@ -92,3 +99,4 @@ li{
     .custom-link:hover {
         color: black;
     }
+
