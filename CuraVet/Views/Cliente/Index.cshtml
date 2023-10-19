@@ -4,41 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Aggiungi Cliente", "AddCliente")
+    @Html.ActionLink("Aggiungi Cliente", "AddCliente","Cliente","", new {@class = "btn btn-custom"})
 </p>
-<table class="table">
-    <tr>
-        <th>
-             @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-             @Html.DisplayNameFor(model => model.Cognome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CF)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cognome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CF)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "ModifyCliente", new { id=item.IdCliente })
-            @Html.ActionLink("Delete", "DeleteCliente", new { id=item.IdCliente })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row row-cols-3">
+    @foreach (var item in Model)
+    {
+        <div class="col my-2">
+            <div class="card text-center">
+                <div class="card-header">@item.Cognome @item.Nome</div>
+                <div class="card-body">
+                    <h5 class="card-title">CF: @item.CF</h5>
+                    <p class="card-text"></p>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-custom" })
+                </div>
+                <div class="card-footer text-muted"> @Html.ActionLink("Elimina", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-custom" })</div>
+            </div>
+        </div>
+    }
+</div>
