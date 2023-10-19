@@ -16,17 +16,17 @@
     {
         <div class="col my-2">
             <div class="card text-center">
-                <div class="card-header">@item.Nome</div>
+                <div class="card-header"> <h3> <strong class="text-custom"> @item.Nome </strong></h3> </div>
                 <div class="card-body">
-                    <h5 class="card-title">@item.Tipologia</h5>
-                    <p class="card-text">@item.Descrizione</p>
-                    <p class="card-text">Armadio: @item.Armadio</p>
-                    <p class="card-text">Cassetto: @item.Cassetto</p>
+                    <h5 class="card-title"><strong class="text-custom">Tipologia </strong> @item.Tipologia</h5>
+                    <p class="card-text"><strong class="text-custom">Descrizione </strong> @item.Descrizione</p>
+                    <p class="card-text"><strong class="text-custom">Armadio: </strong> @item.Armadio</p>
+                    <p class="card-text"><strong class="text-custom">Cassetto: </strong> @item.Cassetto</p>
                     <p class="card-text"></p>
                     @Html.ActionLink("Modifica", "Edit", new { id = item.IdProdotto }, new { @class = "btn btn-custom" })
                     @Html.ActionLink("Elimina", "Delete", new { id = item.IdProdotto }, new { @class = "btn btn-custom" })
                 </div>
-                <div class="card-footer text-muted">Presente: @Html.DisplayFor(model => item.Presente)</div>
+                <div class="card-footer text-custom">Presente: @Html.DisplayFor(model => item.Presente)</div>
             </div>
         </div>
     }
