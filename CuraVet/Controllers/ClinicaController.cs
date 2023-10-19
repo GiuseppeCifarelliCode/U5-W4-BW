@@ -53,7 +53,7 @@ namespace CuraVet.Controllers
         {
             return View(db.Tipologia.ToList());
         }
-
+       
         [HttpGet]
         public ActionResult AddAnimal()
         {
@@ -117,85 +117,6 @@ namespace CuraVet.Controllers
                 return View();
             }
         }
-        public ActionResult DeleteAnimale(int id)
-        {
-            Animale a = db.Animale.Find(id);
-            db.Animale.Remove(a);
-            db.SaveChanges();
-            return RedirectToAction("AnimaliList");
-        }
-        [HttpGet]
-        public ActionResult ModifyAnimale(int id)
-        {
-            List<SelectListItem> listClienti = new List<SelectListItem>();
-            List<SelectListItem> listTipo = new List<SelectListItem>();
-            List<Cliente> c = db.Cliente.ToList();
-            List<Tipologia> t = db.Tipologia.ToList();
-            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone" };
-            listClienti.Add(itemDefault);
-            foreach (Cliente cl in c)
-            {
-                SelectListItem item = new SelectListItem { Text = $"{cl.Nome} {cl.Cognome}", Value = $"{cl.IdCliente}" };
-                listClienti.Add(item);
-            }
-            ViewBag.ListClienti = listClienti;
-            foreach (Tipologia ti in t)
-            {
-                SelectListItem item = new SelectListItem { Text = $"{ti.Tipo}", Value = $"{ti.IdTipologia}" };
-                listTipo.Add(item);
-            }
-            ViewBag.ListTipo = listTipo;
-            Animale a = db.Animale.Find(id);
-            TempData["Foto"] = a.Foto;
-            return View(a);
-        }
-        [HttpPost]
-        public ActionResult ModifyAnimale(Animale a, HttpPostedFileBase Foto)
-        {
-            List<SelectListItem> listClienti = new List<SelectListItem>();
-            List<SelectListItem> listTipo = new List<SelectListItem>();
-            List<Cliente> c = db.Cliente.ToList();
-            List<Tipologia> t = db.Tipologia.ToList();
-            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone" };
-            listClienti.Add(itemDefault);
-            foreach (Cliente cl in c)
-            {
-                SelectListItem item = new SelectListItem { Text = $"{cl.Nome} {cl.Cognome}", Value = $"{cl.IdCliente}" };
-                listClienti.Add(item);
-            }
-            ViewBag.ListClienti = listClienti;
-            foreach (Tipologia ti in t)
-            {
-                SelectListItem item = new SelectListItem { Text = $"{ti.Tipo}", Value = $"{ti.IdTipologia}" };
-                listTipo.Add(item);
-            }
-            ViewBag.ListTipo = listTipo;
-            if (ModelState.IsValid)
-            {
-                if (Foto != null && Foto.ContentLength > 0)
-                {
-                    string nomeFile = Foto.FileName;
-                    string path = Path.Combine(Server.MapPath("~/Content/assets"), nomeFile);
-                    Foto.SaveAs(path);
-                    a.Foto = nomeFile;
-                }
-                else
-                {
-                    if (TempData["Foto"] != null)
-                    {
-                        a.Foto = TempData["Foto"] as string;
-                    }
-                }
-                a.DataRegistrazione = DateTime.Now;
-                db.Entry(a).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("AnimaliList");
-            }
-            else
-            {
-                return View();
-            }
-        }
         public ActionResult AnimaliList()
         {
             List<Animale> list = db.Animale.ToList();
@@ -245,10 +166,8 @@ namespace CuraVet.Controllers
                 db.Entry(v).State = EntityState.Modified;
                 db.SaveChanges();
                 int id = v.IdAnimale;
-                return RedirectToAction("AnimaleDetails", new
-                {
-                    id
-                });
+                return RedirectToAction("AnimaleDetails", new { 
+                    id});
             }
             else
             {
@@ -257,15 +176,14 @@ namespace CuraVet.Controllers
         }
         public JsonResult GetAnimaleByChipNr(string ChipNr)
         {
-
+            
             List<Animale> a = db.Animale.Where(x => x.Microchip == ChipNr).ToList();
-            if (a.Count == 0)
+            if(a.Count == 0)
             {
                 string s = "Nessun Risultato";
                 return Json(s, JsonRequestBehavior.AllowGet);
             }
-            else
-            {
+            else {
                 var formattedAnimals = a.Select(o => new
                 {
                     o.IdAnimale,
