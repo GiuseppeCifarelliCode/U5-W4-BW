@@ -17,9 +17,9 @@
                 <div class="card-body">
                     <h5 class="card-title">CF: @item.CF</h5>
                     <p class="card-text"></p>
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-custom" })
+                    @Html.ActionLink("Modifica", "ModifyCliente", new { id = item.IdCliente }, new { @class = "btn btn-custom" })
                 </div>
-                <div class="card-footer text-muted"> @Html.ActionLink("Elimina", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-custom" })</div>
+                <div class="card-footer text-muted"> @Html.ActionLink("Elimina", "DeleteCliente", new { id = item.IdCliente }, new { @class = "btn btn-custom" })</div>
             </div>
         </div>
     }
