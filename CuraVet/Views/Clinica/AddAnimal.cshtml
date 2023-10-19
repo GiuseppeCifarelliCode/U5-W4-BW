@@ -10,7 +10,7 @@
 @using (Html.BeginForm("AddAnimal", "Clinica", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
+<div class="d-flex justify-content-evenly ">
     <div class="form-horizontal">
         <h4>𝐀𝐠𝐠𝐢𝐮𝐧𝐠𝐢 𝐮𝐧 𝐧𝐮𝐨𝐯𝐨 𝐚𝐧𝐢𝐦𝐚𝐥𝐞</h4>
         <hr />
@@ -50,7 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DataNascita, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataNascita, new { htmlAttributes = new { @class = "form-control", type="date" } })
+                @Html.EditorFor(model => model.DataNascita, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                 @Html.ValidationMessageFor(model => model.DataNascita, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -81,27 +81,29 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default my-2" />
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <img src="~/Content/assets/CatBox.png" class="w-50" />
 </div>
+        }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        let DdCliente = document.getElementById("IdCliente")
-        DdCliente.addEventListener("change", (e) => {
-            if (DdCliente.value != "NULL") {
-                document.getElementById("fotoAnimale").classList.add("d-none")
-            } else {
-                document.getElementById("fotoAnimale").classList.remove("d-none")
-                document.getElementById("fotoAnimale").classList.add("d-block")
-            }
-        })
-    </script>
-}
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script>
+                let DdCliente = document.getElementById("IdCliente")
+                DdCliente.addEventListener("change", (e) => {
+                    if (DdCliente.value != "NULL") {
+                        document.getElementById("fotoAnimale").classList.add("d-none")
+                    } else {
+                        document.getElementById("fotoAnimale").classList.remove("d-none")
+                        document.getElementById("fotoAnimale").classList.add("d-block")
+                    }
+                })
+            </script>
+        }

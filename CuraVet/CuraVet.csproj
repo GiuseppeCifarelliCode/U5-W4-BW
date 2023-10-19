@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\assets\bunny.png" />
     <Content Include="Content\assets\CatBox.png" />
     <Content Include="Content\assets\catP.png" />
     <Content Include="Content\assets\cats3.png" />
