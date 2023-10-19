@@ -4,107 +4,60 @@
     ViewBag.Title = "AnimaleDetails";
 }
 
-<h2>AnimaleDetails</h2>
-
-<div>
-    <h4>Animale</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Nome del propietario
-        </dt>
-
-        <dd>
-            @if (Model.Cliente!=null)
-            {
-                @Html.DisplayFor(model => model.Cliente.Nome)
-            }
-            else
-            {
-                <p>N.D</p>
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipologia.Tipo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tipologia.Tipo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataRegistrazione)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataRegistrazione)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Razza)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Razza)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Colore)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Colore)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataNascita)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataNascita)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Microchip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Microchip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-
-    </dl>
-    <div>
+<div class="row">
+    <div class="col-12 text-center my-3">
         <h2>Storico degli esami:</h2>
-        @Html.ActionLink("Aggiungi Visita", "AddVisita", new { id = Model.IdAnimale })
-        @foreach (CuraVet.Models.Visita v in Model.Visita)
-        {
-            <div class="border border-1 p-3">
-                <a href="/Clinica/ModifyVisita/@v.IdVisita" class="btn btn-primary">Modifica</a>
-                <p><strong>Tipo di esame:</strong>@v.TipoEsame</p>
-                <p><strong>Descrizione:</strong>@v.Descrizione</p>
-                <p><strong>Data:</strong>@v.DataVisita.ToShortDateString()</p>
-            </div>
-        }
     </div>
+    <div class="col-12">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                @if (Model.Foto != null)
+                {<div class="col-md-4">
+                        <img src="~/Content/assets/@Model.Foto"
+                             alt="Trendy Pants and Shoes"
+                             class="img-fluid rounded-start" />
+                    </div>}
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Dettagli paziente</h5>
+                        <p class="card-text">Numero Microchip: <strong>@Model.Microchip</strong></p>
+                        <p class="card-text">Data di registrazione: <strong>@String.Format("{0:dd/MM/yyyy}", Model.DataRegistrazione)</strong></p>
+                        <p class="card-text">
+                                @Html.ActionLink("Aggiungi Visita", "AddVisita", new { id = Model.IdAnimale }, new { @class = "btn btn-custom" })
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @foreach (CuraVet.Models.Visita v in Model.Visita)
+    {
+        <div class="col col-lg-6">
+            <div class="card my-3">
+                <div class="card-header">
+                    <p><strong>Data:</strong>@v.DataVisita.ToShortDateString()</p>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        @if (v.Attiva)
+                        {
+                            <p><span class="badge rounded-pill badge-success">Attiva</span></p>
+                        }
+                        else
+                        {
+                            <p><span class="badge rounded-pill badge-danger">Non Attiva</span></p>
+                        }
+                        <div><a href="/Clinica/ModifyVisita/@v.IdVisita" class="btn btn-custom">Modifica</a></div>
+
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Tipo di esame:</strong>@v.TipoEsame</p>
+                        <p><strong>Descrizione:</strong>@v.Descrizione</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdAnimale }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

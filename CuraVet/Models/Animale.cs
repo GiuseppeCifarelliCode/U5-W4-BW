@@ -5,6 +5,7 @@ namespace CuraVet.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("Animale")]
     public partial class Animale
@@ -51,5 +52,6 @@ namespace CuraVet.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Visita> Visita { get; set; }
+
     }
 }
