@@ -4,15 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+<div class="d-flex justify-content-evenly ">
     <div class="form-horizontal">
-        <h4>Prodotto</h4>
+        <h4>𝐌𝐨𝐝𝐢𝐟𝐢𝐜𝐚 𝐢𝐥 𝐩𝐫𝐨𝐝𝐨𝐭𝐭𝐨</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IdProdotto)
@@ -85,16 +85,18 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-custom" />
+                <input type="submit" value="Save" class="btn btn-custom mt-3" />
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <img src="~/Content/assets/cats3.png" style="width:500px; height:500px;" />
 </div>
+    }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

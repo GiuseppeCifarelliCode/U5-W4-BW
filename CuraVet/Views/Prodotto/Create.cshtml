@@ -4,15 +4,15 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+<div class="d-flex justify-content-evenly ">
     <div class="form-horizontal">
-        <h4>Prodotto</h4>
+        <h4>𝐂𝐫𝐞𝐚 𝐮𝐧 𝐧𝐮𝐨𝐯𝐨 𝐩𝐫𝐨𝐝𝐨𝐭𝐭𝐨</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdDitta, "IdDitta", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdDitta", new SelectList(ViewBag.Ditte,"Value","Text"), new { @class = "form-control" })
+                @Html.DropDownList("IdDitta", new SelectList(ViewBag.Ditte, "Value", "Text"), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdDitta, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -83,13 +83,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-custom" />
+                <input type="submit" value="Create" class="btn btn-custom mt-3" />
             </div>
         </div>
     </div>
-}
+    <img src="~/Content/assets/dogC.png" style="width:500px; height:500px;" />
+</div>
+    }
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
