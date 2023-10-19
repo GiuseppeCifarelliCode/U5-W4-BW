@@ -61,7 +61,7 @@ namespace CuraVet.Controllers
             List<SelectListItem> listTipo = new List<SelectListItem>();
             List<Cliente> c = db.Cliente.ToList();
             List<Tipologia> t = db.Tipologia.ToList();
-            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone", Value = "NULL" };
+            SelectListItem itemDefault = new SelectListItem { Text = $"Nessun Padrone" };
             listClienti.Add(itemDefault);
             foreach (Cliente cl in c)
             {
@@ -110,7 +110,7 @@ namespace CuraVet.Controllers
                 a.DataRegistrazione = DateTime.Now;
                 db.Animale.Add(a);
                 db.SaveChanges();
-                return RedirectToAction("ClientiList");
+                return RedirectToAction("AnimaliList");
             }
             else
             {

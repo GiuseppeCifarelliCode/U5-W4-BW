@@ -30,7 +30,7 @@ namespace CuraVet.Controllers
             {
                 db.Cliente.Add(c);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             return View();
 
