@@ -12,8 +12,6 @@ textarea {
     max-width: 280px;
 }
 
-
-
 /*Navbar*/
 
 .navbar {
@@ -67,9 +65,9 @@ li{
     background-color: rgb(4,116,124);
     color: white;
 }
-    
+
 .text-custom {
-    color: red !important
+    color: rgb(4,116,124);
 }
 
 .btn-custom, btn-default {

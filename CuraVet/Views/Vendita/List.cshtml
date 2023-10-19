@@ -6,8 +6,11 @@
 
 <div class="d-flex justify-content-between">
     <div class="accordion accordion-borderless w-50 mx-2" id="accordionFlush1X">
-        <input type="date" class="text-center" id="dateField" />
-        <div class="accordion-item">
+        <label for="dateField" class="form-label">Seleziona una data</label>
+        <div class="input-group">
+            <input type="date" class="form-control" id="dateField" />
+        </div>
+        <div class="accordion-item mt-3">
             <h2 class="accordion-header" id="flush-headingOneX">
                 <button class="accordion-button btn btn-custom" type="button" data-mdb-toggle="collapse" id="buttonForDate"
                         data-mdb-target="#flush-collapseOneX" aria-expanded="true" aria-controls="flush-collapseOneX">
@@ -22,8 +25,11 @@
         </div>
     </div>
     <div class="accordion accordion-borderless w-50 mx-2" id="accordionFlush2X">
-        <input placeholder="Inserisci CF" class="text-center" id="CFField" />
-        <div class="accordion-item">
+        <label for="CFField" class="form-label">Inserisci CF Cliente</label>
+        <div class="input-group">
+            <input type="text" placeholder="Inserisci CF" class="form-control" id="CFField" />
+        </div>
+        <div class="accordion-item mt-3">
             <h2 class="accordion-header" id="flush-headingTwoX">
                 <button class="accordion-button btn btn-custom" type="button" data-mdb-toggle="collapse" id="buttonForCF"
                         data-mdb-target="#flush-collapseTwoX" aria-expanded="true" aria-controls="flush-collapseTwoX">
@@ -44,13 +50,13 @@
     {
         <div class="col my-2">
             <div class="card text-center">
-                <div class="card-header">@item.Cliente.Cognome @item.Cliente.Nome</div>
+                <div class="card-header"> <h3 class="text-custom"> <strong> @item.Cliente.Cognome @item.Cliente.Nome </strong> </h3> </div>
                 <div class="card-body">
-                    <h5 class="card-title">@item.Prodotto.Nome</h5>
-                    <p class="card-text">Quantità: @item.Quantita</p>
-                    <p class="card-text">Ricetta: @item.RicettaMedica</p>
+                    <h5 class="card-title"><strong class="text-custom"> Prdotto:</strong> @item.Prodotto.Nome</h5>
+                    <p class="card-text"><strong class="text-custom">Quantità:</strong> @item.Quantita</p>
+                    <p class="card-text"><strong class="text-custom">Ricetta:</strong> @item.RicettaMedica</p>
                 </div>
-                <div class="card-footer text-muted">Data: @item.Data.ToShortDateString()</div>
+                <div class="card-footer text-custom">Data: @item.Data.ToShortDateString()</div>
             </div>
         </div>
     }
