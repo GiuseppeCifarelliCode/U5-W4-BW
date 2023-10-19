@@ -14,6 +14,7 @@ namespace CuraVet.Controllers
     public class ProdottoController : Controller
     {
         private static ModelDBContext db = new ModelDBContext();
+        private ModelDBContext db1 = new ModelDBContext();
         public List<Ditta> ditte = db.Ditta.ToList();
         public List<SelectListItem> d
         {
@@ -32,7 +33,7 @@ namespace CuraVet.Controllers
         // GET: Prodotto
         public ActionResult Index()
         {
-            var prodotto = db.Prodotto.Include(p => p.Ditta);
+            var prodotto = db1.Prodotto.Include(p => p.Ditta);
             return View(prodotto.ToList());
         }
 
@@ -82,12 +83,12 @@ namespace CuraVet.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prodotto prodotto = db.Prodotto.Find(id);
+            Prodotto prodotto = db1.Prodotto.Find(id);
             if (prodotto == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdDitta = new SelectList(db.Ditta, "IdDitta", "Nome", prodotto.IdDitta);
+            ViewBag.IdDitta = new SelectList(db1.Ditta, "IdDitta", "Nome", prodotto.IdDitta);
             return View(prodotto);
         }
 
@@ -99,11 +100,11 @@ namespace CuraVet.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(prodotto).State = EntityState.Modified;
-                db.SaveChanges();
+                db1.Entry(prodotto).State = EntityState.Modified;
+                db1.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdDitta = new SelectList(db.Ditta, "IdDitta", "Nome", prodotto.IdDitta);
+            ViewBag.IdDitta = new SelectList(db1.Ditta, "IdDitta", "Nome", prodotto.IdDitta);
             return View(prodotto);
         }
 
