@@ -17,10 +17,11 @@ namespace CuraVet.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Tipo di esame")]
         public string TipoEsame { get; set; }
 
         public string Descrizione { get; set; }
-
+        [Display(Name = "Ricovero attivo?")]
         public bool Attiva { get; set; }
 
         public int IdAnimale { get; set; }

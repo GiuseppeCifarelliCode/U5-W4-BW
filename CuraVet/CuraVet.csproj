@@ -302,6 +302,7 @@
     <Content Include="Views\Prodotto\SearchList.cshtml" />
     <Content Include="Views\Clinica\AddAnimal.cshtml" />
     <Content Include="Views\Clinica\ModifyAnimale.cshtml" />
+    <Content Include="Views\Clinica\ModifyVisita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

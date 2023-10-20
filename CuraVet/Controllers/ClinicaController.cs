@@ -182,6 +182,7 @@ namespace CuraVet.Controllers
                 return View(v);
             }
         }
+        [AllowAnonymous]
         public JsonResult GetAnimaleByChipNr(string ChipNr)
         {
             
