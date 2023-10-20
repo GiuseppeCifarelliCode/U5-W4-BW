@@ -76,7 +76,7 @@
                         $.each(data, function (i, v) {
                             console.log(data);
                             var licurrent = "<li>" +
-                                "#"+v.IdProdotto + " " +"Quantità: " +v.Quantita
+                                "<span class='text-custom fw-bold'> IdProdotto: </span>" + "#" + v.IdProdotto + " " + "<span class='text-custom fw-bold'> Quantità: </span>" +v.Quantita
                                 "</li>";
                             $("#prodottiPerData").append(licurrent);
                         });
@@ -94,7 +94,9 @@
                     success: function (data) {
                         $.each(data, function (i, v) {
                             var licurrent = "<li>" +
-                              "CF: "+ cf + " "+ "#" + v.IdProdotto + " " + "Quantità: " + v.Quantita
+                                "<span class='text-custom fw-bold'> CF: </span>" + cf + " " +
+                                "<span class='text-custom fw-bold'> IdProdotto: </span>"+ "#" + v.IdProdotto + " " +
+                                "<span class='text-custom fw-bold'> Quantità: </span>" + v.Quantita
                             "</li>";
                                 "</li>";
                             $("#prodottiPerCF").append(licurrent);

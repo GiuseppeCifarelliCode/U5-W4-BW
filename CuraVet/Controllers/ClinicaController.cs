@@ -117,6 +117,14 @@ namespace CuraVet.Controllers
                 return View();
             }
         }
+
+        public ActionResult DeleteAnimale(int? id)
+        {
+            Animale animale = db.Animale.Find(id);
+            db.Animale.Remove(animale);
+            db.SaveChanges();
+            return RedirectToAction("AnimaliList");
+        }
         public ActionResult AnimaliList()
         {
             List<Animale> list = db.Animale.ToList();

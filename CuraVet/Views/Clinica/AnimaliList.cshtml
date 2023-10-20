@@ -7,13 +7,10 @@
 
 <div class="d-flex gap-3">
     <p>
-        @Html.ActionLink("Home", "Index")
+        @Html.ActionLink("Aggiungi un Animale", "AddAnimal","Clinica","",new {@class="btn btn-custom"})
     </p>
     <p>
-        @Html.ActionLink("Aggiungi un Animale", "AddAnimal")
-    </p>
-    <p>
-        @Html.ActionLink("Aggiungi un tipo di animale", "AddTipologia")
+        @Html.ActionLink("Aggiungi un tipo di animale", "AddTipologia","Clinica","", new { @class = "btn btn-custom" })
     </p>
 </div>
 <h2 class="text-center my-3">𝐒𝐭𝐨𝐫𝐢𝐜𝐨 𝐝𝐞𝐠𝐥𝐢 𝐚𝐧𝐢𝐦𝐚𝐥𝐢 𝐜𝐮𝐫𝐚𝐭𝐢</h2>
@@ -39,11 +36,10 @@
                     <div class="d-flex gap-3">
                         @Html.ActionLink("Dettagli", "AnimaleDetails", new { id = a.IdAnimale }, new { @class = "btn btn-custom" })
                         @Html.ActionLink("Delete", "DeleteAnimale", new { id = a.IdAnimale }, new { @class = "btn btn-danger" })
-                        @Html.ActionLink("Modifica", "ModifyAnimale", new { id = a.IdAnimale }, new { @class = "btn btn-warning" })
                     </div>
                 </div>
                     @if (a.Foto != null)
-                    {<img class="img-thumbnail" src="~/Content/assets/@a.Foto" width="200"/>}
+                    {<img class="img-thumbnail w-25" src="~/Content/assets/@a.Foto"/>}
 
             </div>
         </div>
